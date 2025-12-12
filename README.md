@@ -116,11 +116,27 @@ his project focuses on designing and implementing a relational database system f
       mysql> insert into products values(55,'Vaccum Cleaner',3099,21);
 
 # -- Step 10: insert values into orders Table
-       
+      mysql> insert into orders values (111,22,now(),4000);
+      mysql> insert into orders values(112,21,'2025-11-29',25000);
+      mysql> insert into orders values (113,25,'2025-11-28',2000);
+      mysql> insert into orders values (114,26,'2025-11-26',1000);
+      mysql> insert into orders values (115,23,'2025-11-26',6000);
+      mysql> insert into orders values (116,24,'2025-11-24',8000);
+      mysql> insert into orders values (117,27,'2025-10-23',8000);
+      mysql> insert into orders values (118,28,'2025-09-22',9000);
+      mysql> insert into orders values (119,30,'2025-10-21',10000);
+      mysql> insert into orders values (120,30,'2025-10-22',1099);
+      mysql> insert into orders values (121,21,'2025-10-18',599);
+      mysql> insert into orders values (122,31,'2025-09-12',899);
+      mysql> insert into orders values (123,32,'2025-09-11',1299);
+      mysql> insert into orders values (124,34,'2025-09-11',4099);
+      mysql> insert into orders values (125,35,'2025-09-10',4099);
 
 # -- step 11: insert values into orders_items Table 
+          mysql> insert into order_items values (311,111,41,1)(312,112,42,1),(313,113,43,1),(314,114,44,2),(315,115,45,1),(316,116,46,1),(316,116,46,1),(317,117,47,1),(318,118,48,1),(319,119,49,1),(320,120,50,1),(321,121,51,1),(322,122,52,1),(323,123,53,1),(324,124,54,1),(325,125,55,1),(315,115,45,1),(316,116,46,1),(317,117,47,1),(318,118,48,1),(319,119,49,1),(320,120,50,1),(321,121,51,1),(322,122,52,1),(323,123,53,1),(324,124,54,1),(325,125,55,1);
 
 # -- step 12: insert values into Payments Table 
+     mysql> insert into payments  values (212,112, '2025-11-29', 25000, 'Card'),(213,113, '2025-11-28', 2000, 'Cash'),(214,114, '2025-11-26', 1000, 'UPI'),(215,115, '2025-11-26', 6000, 'UPI'),(216,116, '2025-11-24', 8000, 'Card'),(217,117, '2025-10-23', 8000, 'Cash'),(218,118, '2025-09-22', 9000, 'UPI'),(219,119, '2025-10-21', 10000, 'Card'),(220,120, '2025-10-22', 1099, 'UPI'),(221,121, '2025-10-18', 599, 'UPI'),(222,122, '2025-09-12', 899, 'Card'),(223,123, '2025-09-11', 1299, 'UPI'),(224,124, '2025-09-11', 4099, 'UPI'),(225,125,'2025-09-10', 4099, 'Cash');
 
 
 
