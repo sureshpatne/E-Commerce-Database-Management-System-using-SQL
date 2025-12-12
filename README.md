@@ -62,7 +62,71 @@ his project focuses on designing and implementing a relational database system f
 - Employees manage accounts, approve loans, and monitor transactions.
 - Reports & Statements
 - Generate account summaries, transaction history, and loan reports.
- # -- Step 1: Create and use database
+ # -- Step 1: Create  database
+      create database
+          Ecommerce_Project;
+# -- Step 2: use database
+         use Ecommerce_Project;
+            Database changed
+
+# -- step 3: Create Table Customer 
+      mysql> create table Customers(Customer_id int primary key ,Customer_Name varchar(100),Customer_emailid varchar(100),Customer_Phonenumber varchar(20),Customer_Address varchar(40));
+
+# -- Step 4: Create Table Product
+    mysql> create table Products(Product_Id int primary key,Product_name varchar(40),Product_Price decimal(11.3),Product_stock int);
+    
+# -- Step 5: Create Table orders
+    mysql> create table Orders (Order_id int primary key ,Customer_id int ,Order_date date ,Total_Amount decimal(11,3) );
+
+# -- Step 6: Create Table orders_items
+    mysql> create table Orders_Items(Items_id int primary key , Order_id int ,Product_id int,Quentity int ,Price decimal(11,3));
+
+# -- Step 7: Create Table Payments
+    mysql> create table payments(Payment_Id int primary key ,Order_Id int,Payment_date date,Amount decimal(10,2),Payment_mathod varchar(30),constraint fk_payment_order foreign key (order_Id) references orders(order_Id));
+# -- Step 8: insert values into Customer Table 
+    mysql> insert into Customers values(21,'Shubham','shubhambasole@123',9019074004,'Pune');
+    mysql> insert into Customers values(22,'Ramesh','ramesh@123',7854238934,'Bhosari');
+    mysql> insert into Customers values (23,'Linga','linga@432',9898987676,'Aundh');
+    mysql> insert into Customers values(24,'Rakesh','Rakesh@123',2323234545,'Baner');
+    mysql> insert into Customers values(25,'Denesh','denesh@123',9898765644,'Bhalki');
+    mysql> insert into Customers values(26,'Akash','akash@123',3345451120,'Benglore');
+    mysql> insert into Customers values(27,'Vishnu','vishnu@123',3456542210,'Benglore');
+    mysql> insert into Customers values(28,'Ram','ram@133',8989887767,'Kalburgi');
+    mysql> insert into Customers values(29,'Sheshank','sheshank@123',7766558987,'Humnbad');
+    mysql> insert into Customers values(30,'Omprakash','omprakash@123',8877996667,'Bhaki');
+    mysql> insert into Customers values(31,'Omkar','omkar@123',4343238978,'Salapur');
+    mysql> insert into Customers values(32,'Omkar','omkar@123',4333221140,'Pune');
+    mysql> insert into Customers values(33,'Amar','amar@123',4433225566,'Benglore');
+    mysql> insert into Customers values(34,'Aman','aman@123',4433227689,'Belgaon');
+    mysql> insert into Customers values(35,'kiran','kiran@123',9033227689,'Sonal');
+    
+# -- Step 9: insert values into Product Table 
+      mysql> insert into products values (41,'Laptops',65000,25);
+      mysql> insert into products values (42,'Headphone',1200,20);
+      mysql> insert into products values(45,'Pendrive 512GB',4000,40);
+      mysql> insert into products values(46,'Smartwatch',2500,10);
+      mysql> insert into products values(47,'Power Bank 10000mAh',2099,50);
+      mysql> insert into products values(48,'Mobile Bank Cover',499,12);
+      mysql> insert into products values(49,'Wireless Earbuds',2999,35);
+      mysql> insert into products values(50,'Air Conditioner',40999,51);
+      mysql> insert into products values(51,'DSLR Camera',60999,60);
+      mysql> insert into products values(52,'Bluetooth Speaker',1599,32);
+      mysql> insert into products values(53,'Vireless Mouse',699,90);
+      mysql> insert into products values(54,'Laptop Stand',2999,23);
+      mysql> insert into products values(55,'Vaccum Cleaner',3099,21);
+
+# -- Step 10: insert values into orders Table
+       
+
+# -- step 11: insert values into orders_items Table 
+
+# -- step 12: insert values into Payments Table 
+
+
+
+
+
+
  
 
 
