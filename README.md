@@ -138,10 +138,9 @@ his project focuses on designing and implementing a relational database system f
 # -- step 12: insert values into Payments Table 
      mysql> insert into payments  values (212,112, '2025-11-29', 25000, 'Card'),(213,113, '2025-11-28', 2000, 'Cash'),(214,114, '2025-11-26', 1000, 'UPI'),(215,115, '2025-11-26', 6000, 'UPI'),(216,116, '2025-11-24', 8000, 'Card'),(217,117, '2025-10-23', 8000, 'Cash'),(218,118, '2025-09-22', 9000, 'UPI'),(219,119, '2025-10-21', 10000, 'Card'),(220,120, '2025-10-22', 1099, 'UPI'),(221,121, '2025-10-18', 599, 'UPI'),(222,122, '2025-09-12', 899, 'Card'),(223,123, '2025-09-11', 1299, 'UPI'),(224,124, '2025-09-11', 4099, 'UPI'),(225,125,'2025-09-10', 4099, 'Cash');
 
+# -- Conclusion
 
-
-
-
+The E-Commerce Management System provides a structured and efficient approach to managing products, customers, orders, payments, and inventory using MySQL. This project demonstrates key database concepts such as relational design, foreign keys, and data integrity, ensuring accurate and reliable transaction handling. It also shows how SQL queries and stored operations can automate essential e-commerce tasks like order processing, stock updates, and payment tracking.
 
  
 
