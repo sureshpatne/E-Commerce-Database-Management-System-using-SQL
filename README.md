@@ -139,27 +139,55 @@ his project focuses on designing and implementing a relational database system f
      mysql> insert into payments  values (212,112, '2025-11-29', 25000, 'Card'),(213,113, '2025-11-28', 2000, 'Cash'),(214,114, '2025-11-26', 1000, 'UPI'),(215,115, '2025-11-26', 6000, 'UPI'),(216,116, '2025-11-24', 8000, 'Card'),(217,117, '2025-10-23', 8000, 'Cash'),(218,118, '2025-09-22', 9000, 'UPI'),(219,119, '2025-10-21', 10000, 'Card'),(220,120, '2025-10-22', 1099, 'UPI'),(221,121, '2025-10-18', 599, 'UPI'),(222,122, '2025-09-12', 899, 'Card'),(223,123, '2025-09-11', 1299, 'UPI'),(224,124, '2025-09-11', 4099, 'UPI'),(225,125,'2025-09-10', 4099, 'Cash');
 
 # -- Step 13: Queries and outputs 
- #  1.List all payments with order details 
-      select p.Payment_Id ,o.Order_Id ,p.Amount , p.Payment_mathod,p.payment_date from payments p join orders o on p.order_Id= o.Order_Id ;
- #  2.Find total amount paid by each customer
-      select c.Customer_name,sum(p.amount)as Total_paid from customers c join orders o on c.Customer_Id = o.Customer_Id join payments p on o.Order_Id = p.order_Id group by c.Customer_name;
- #  3.Find total amount of each order 
-      select oi.Order_Id ,sum(Quantity * p.Product_price) as Total_Amount from order_items oi join products p on oi.Product_Id = p.Product_Id group by oi.Order_Id;
- #  4.Show all customers and their orders
-      mysql> select c.Customer_name , o.Order_id,o.Total_Amount,o.Order_date from customers c join orders o on c.customer_id = o.Customer_id;
- #  5.Show product name, quantity, and order ID
-       select oi.Order_Id , p.Product_name,oi.Quantity from order_items oi join products p on oi.Product_Id = p.Product_Id;
- #  6.Show highest product price
-       select Product_name, Product_Price from products order by Product_Price desc limit 1;
- #  7.Show customers who spent more than ₹10,000
-      select c.Customer_Name,o.Total_amount from customers c join orders o on c.Customer_id = o.customer_id where o.Total_Amount>10000;
- #  8.Show total number of orders
-       select count(*) as Total_Orders from orders;
- #  9.Show total revenue
-       select sum(Total_Amount) as Total_Revenue from orders;
- #  10.Show product stock less than 20
-        select Product_name,Product_stock from products where Product_stock <20;
+ # 1.List all payments with order details 
+    select p.Payment_Id ,o.Order_Id ,p.Amount , p.Payment_mathod,p.payment_date from payments p join orders o on p.order_Id= o.Order_Id ;
+ # 2.Find total amount paid by each customer
+    select c.Customer_name,sum(p.amount)as Total_paid from customers c join orders o on c.Customer_Id = o.Customer_Id join payments p on o.Order_Id = p.order_Id group by c.Customer_name;
+ # 3.Find total amount of each order 
+    select oi.Order_Id ,sum(Quantity * p.Product_price) as Total_Amount from order_items oi join products p on oi.Product_Id = p.Product_Id group by oi.Order_Id;
+ # 4.Show all customers and their orders
+    select c.Customer_name , o.Order_id,o.Total_Amount,o.Order_date from customers c join orders o on c.customer_id = o.Customer_id;
+ # 5.Show product name, quantity, and order ID
+    select oi.Order_Id , p.Product_name,oi.Quantity from order_items oi join products p on oi.Product_Id = p.Product_Id;
+ # 6.Show highest product price
+    select Product_name, Product_Price from products order by Product_Price desc limit 1;
+ # 7.Show customers who spent more than ₹10,000
+    select c.Customer_Name,o.Total_amount from customers c join orders o on c.Customer_id = o.customer_id where o.Total_Amount>10000;
+ # 8.Show total number of orders
+    select count(*) as Total_Orders from orders;
+ # 9.Show total revenue
+    select sum(Total_Amount) as Total_Revenue from orders;
+ # 10.Show product stock less than 20
+    select Product_name,Product_stock from products where Product_stock <20;
+ # 11.Show all payments made using UPI
+    select * from payments where Payment_mathod='UPI';
+ # 12.Show customer name, product name, and quantity (full join across all tables)
+     SELECT c.Customer_name, p.Product_name, oi.Quantity FROM customers c LEFT JOIN orders o ON c.Customer_Id = o.Customer_Id LEFT JOIN order_items oi ON o.Order_Id = oi.Order_Id LEFT JOIN products p ON oi.Product_Id = p.Product_Id UNION SELECT c.Customer_name, p.Product_name, oi.Quantity FROM customers c RIGHT JOIN orders o ON c.Customer_Id = o.Customer_Id RIGHT JOIN order_items oi ON o.Order_Id = oi.Order_Id RIGHT JOIN products p ON oi.Product_Id = p.Product_Id;
+ # 13.List all orders with customer name and payment method
+     SELECT o.Order_Id, c.Customer_name, p.Payment_mathod FROM orders o JOIN customers c ON o.Customer_Id = c.Customer_Id JOIN payments p ON o.Order_Id = p.Order_Id;
+  
+ # 14. Show top 3 most expensive products
+     SELECT Product_name, Product_Price FROM products ORDER BY Product_Price DESC LIMIT 3;
 
+ # 15. Show number of products in each order
+     SELECT oi.Order_Id, SUM(oi.Quantity) AS Total_Items FROM order_items oi GROUP BY oi.Order_Id;
+
+ # 16. Show customers who paid using UPI
+     SELECT DISTINCT c.Customer_name FROM customers c JOIN orders o ON c.Customer_Id = o.Customer_Id JOIN payments p ON o.Order_Id = p.Order_Id WHERE p.Payment_mathod = 'UPI';
+
+ # 17. Show products that were never ordered
+      SELECT p.Product_name FROM products p LEFT JOIN order_items oi ON p.Product_Id = oi.Product_Id WHERE oi.Product_Id IS NULL;
+
+ # 18.Show orders placed in the last 7 days
+     select * from orders where Order_date >= curdate() - interval 7 day;
+
+#  19. Show customer name and total quantity they ordered
+      SELECT c.Customer_name, SUM(oi.Quantity) AS Total_Quantity FROM customers c JOIN orders o ON c.Customer_Id = o.Customer_Id JOIN order_items oi ON o.Order_Id = oi.Order_Id GROUP BY c.Customer_name;
+
+#  20. Show product with minimum stock
+     SELECT Product_name, Product_stock FROM products ORDER BY Product_stock ASC LIMIT 1;
+
+ 
 # -- Conclusion
 The E-Commerce Management System provides a structured and efficient approach to managing products, customers, orders, payments, and inventory using MySQL. This project demonstrates key database concepts such as relational design, foreign keys, and data integrity, ensuring accurate and reliable transaction handling. It also shows how SQL queries and stored operations can automate essential e-commerce tasks like order processing, stock updates, and payment tracking.
 
